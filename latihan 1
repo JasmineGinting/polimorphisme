@@ -1,0 +1,37 @@
+package polimorphisme;
+
+public abstract class Latihan_1 {
+  int x = 10; //variabel instan
+  
+  public void function() {
+      System.out.println("Pesawat Terbang");
+  }  
+  
+  public abstract void bensin();
+
+  public abstract void jalan();
+}
+
+====== UJI LATIHAN 1 ======
+
+package polimorphisme;
+
+public class Uji_Lat1 extends Latihan_1 {
+    @Override
+    public void jalan() {
+        System.out.println("Take Off " + x + " manit lagi");
+    }
+    
+    @Override
+    public void bensin() {
+        System.out.println("Avtur");
+    }
+    
+    public static void main(String[] args) {
+        Uji_Lat1 ngeng = new Uji_Lat1(); 
+        ngeng.function();
+        ngeng.bensin();
+        ngeng.jalan();   
+    }
+}
+
