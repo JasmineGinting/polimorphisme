@@ -1,0 +1,93 @@
+package polimorphisme;
+
+public class Latihan_4_1 {
+    
+    private String warna;
+    
+    Latihan_4_1(String warna) {
+        this.warna = warna;
+    }
+    
+    @Override
+    public String toString() {
+        return "bentuk[warna = " + warna + "]";
+    }
+    
+    public double getLuas() {
+        System.err.println("bentuk tidak diketahui!");
+        return 0;
+    }
+}
+
+============
+
+package polimorphisme;
+
+public class Latihan_4_2 extends Latihan_4_1 {
+     
+    private int panjang;
+    private int lebar;
+    
+    Latihan_4_2(String warna, int p, int l) {
+        super(warna);
+        panjang = p;
+        lebar = l;
+    }
+    
+    @Override
+    public String toString() {
+        return "persegi[panjang = " + panjang + "\nlebar = " + lebar + "\n" + super.toString() + "]";
+    }
+    
+    @Override
+    public double getLuas() {
+        return panjang * lebar;
+    }
+}
+
+============
+
+package polimorphisme;
+
+public class Latihan_4_3 extends Latihan_4_1 {
+    
+    private int alas;
+    private int tinggi;
+    
+    Latihan_4_3(String warna, int a, int t) {
+        super(warna);
+        alas = a;
+        tinggi = t;
+    }
+    
+    @Override
+    public String toString() {
+        return "segitiga[alas = " + alas + "\ntinggi = " + tinggi + "\n" + super.toString() + "]";
+    }
+    
+    @Override
+        public double getLuas() {
+        return alas * tinggi / 2;
+    }
+}
+
+====== UJI LATIHAN 4 ======
+
+package polimorphisme;
+
+public class Uji_Lat4 {
+
+    public static void main(String[] args) {
+        
+        Latihan_4_1 obj = new Latihan_4_2("kuning", 15, 15);
+        System.out.println(obj);
+        System.out.println("luas : " + obj.getLuas());
+        
+        Latihan_4_1 obj2 = new Latihan_4_3("biru", 12, 7);
+        System.out.println(obj2);
+        System.out.println("luas : " + obj2.getLuas());
+    }
+    
+}
+
+
