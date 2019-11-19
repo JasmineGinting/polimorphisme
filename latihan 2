@@ -1,0 +1,87 @@
+package polimorphisme;
+
+interface Latihan_2_1 {
+    public boolean LebihBagus(Object a, Object b);
+    public boolean LebihSedikit(Object a, Object b);
+    public boolean SamaDengan(Object a, Object b);
+}
+
+============
+
+package polimorphisme;
+
+import java.lang.Math;
+
+class Latihan_2_2 implements Latihan_2_1 {
+    private double x1;
+    private double x2;
+    private double y1;
+    private double y2;
+
+    @Override
+    public boolean LebihBagus(Object a, Object b) {
+        a = 2;
+        b = "nilai a adalah 2";
+        return false;
+    }
+
+    @Override
+    public boolean LebihSedikit(Object a, Object b) {
+        a = 1;
+        b = "nilai adalah 1";
+        return false;
+    }
+
+    @Override
+    public boolean SamaDengan(Object a, Object b) {
+        a = 0;
+        b = "nilai a adalah 0";
+        return true;
+    }
+    
+    public Latihan_2_2 (double x, double y, double z, double w) {
+        this.x1 = x;
+        this.x2 = y;
+        this.y1 = z;
+        this.y2 = w;
+    }   
+    
+    public double getLength() {
+        double length = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+        return length;
+    }
+    
+    public boolean isGreater(Object a, Object b) {
+        double aLen = ((Latihan_2_2)a).getLength();
+        double bLen = ((Latihan_2_2)b).getLength();
+        return (aLen > bLen);
+    }
+    
+    public boolean isLess(Object a, Object b) {
+        double aLen = ((Latihan_2_2)a).getLength();
+        double bLen = ((Latihan_2_2)b).getLength();
+        return (aLen < bLen);        
+    }
+    
+    public boolean isEqual(Object a, Object b) {
+        double aLen = ((Latihan_2_2)a).getLength();
+        double bLen = ((Latihan_2_2)b).getLength();
+        return (aLen == bLen);
+    }        
+}
+
+====== UJI LATIHAN 2 ======
+
+package polimorphisme;
+
+public class Uji_Lat2 {
+
+    public static void main(String[] args) {
+        Latihan_2_2 objek = new Latihan_2_2(13.4, 34.1, 7.5, 6.0);
+        System.out.println(objek.getLength());
+        System.out.println(objek.LebihBagus(objek, objek));
+        System.out.println(objek.LebihSedikit(objek, objek));
+        System.out.println(objek.SamaDengan(objek, objek));
+    }
+    
+}
