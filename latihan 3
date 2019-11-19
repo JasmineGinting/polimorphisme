@@ -1,0 +1,80 @@
+package polimorphisme;
+
+public class Latihan_3_1 {
+     String nama;
+     
+     Latihan_3_1() {
+         
+     }
+     
+     Latihan_3_1(String nama) {
+         this.nama = nama;
+         System.out.println("ame");
+     }
+     
+     public int gaji() {
+         return 0;
+     }
+     
+============
+
+package polimorphisme;
+
+public class Latihan_3_2 extends Latihan_3_1 {
+    
+    private static final int gaji = 500000;
+    private static final int tunjangan = 150000;
+    
+    public int gaji() {
+        return gaji;
+    }
+    
+    public int tunjangan() {
+        return tunjangan;
+    }
+}
+
+============
+
+package polimorphisme;
+
+public class Latihan_3_3 extends Latihan_3_2 {
+    
+    private static final int gaji = 350000;
+    private static final int tunjangan = 100000;
+    
+    public int gaji() {
+        return gaji;
+    }
+    
+    public int tunjangan() {
+        return tunjangan;
+    }
+}
+
+====== UJI LATIHAN 3 ======
+
+package polimorphisme;
+
+public class Uji_Lat3 {
+
+    public int hitungGaji(Latihan_3_1 obj) {
+        int uang = obj.gaji();
+        if (obj instanceof Latihan_3_2 ) {
+            uang +=((Latihan_3_2)obj).tunjangan();
+        }
+        if (obj instanceof Latihan_3_3) {
+            uang += ((Latihan_3_3)obj).tunjangan();
+        }
+        return uang;
+    }
+    public static void main(String[] args) {
+        Uji_Lat3 obj = new Uji_Lat3();
+        Latihan_3_2 dir = new Latihan_3_2();
+        Latihan_3_3 kar = new Latihan_3_3();
+        
+        System.out.println("gaji direktur : " + obj.hitungGaji(dir));
+        System.out.println("gaji karyawan : " + obj.hitungGaji(kar));
+    }
+    
+}
